@@ -17,15 +17,15 @@ const Input = () => {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
+    // for images we create a reference and upload it to firebase, then we create the entry in 'chats' collection
     if(img){
 
       const storageRef = ref(storage, uuid());
-
       const uploadTask = uploadBytesResumable(storageRef, img);
 
       uploadTask.on(
         (error) => {
-            // setError(true);
+            setError(true);
         }, 
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
@@ -41,7 +41,7 @@ const Input = () => {
             });
           }
         );
-
+    // for plain text messages it's a lot easier
     }else{
       await updateDoc(doc(db, "chats", data.chatId), {
         messages : arrayUnion({
@@ -53,6 +53,7 @@ const Input = () => {
       });
     }
 
+    // update 'userChats' collection for both ends of the conversation
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [data.chatId + ".lastMessage"] : {
         text
@@ -67,19 +68,20 @@ const Input = () => {
       [data.chatId + ".date"] : serverTimestamp()
     });
 
+    // erase the input contents after sending
     setText("");
     setImg(null);
   };
 
   return (
-    <div className='input'>
-      <input type="text" placeholder='Write your message...' onChange = {e => setText(e.target.value)} value={text}/>
-      <div className="send">
-        <input type="file" style={{display: 'none'}} id='file' onChange = {e => setImg(e.target.files[0])}/>
-        <label htmlFor='file'>
-          <img src={Img} alt="" />
+    <div className = 'input'>
+      <input type = "text" placeholder = 'Write your message...' onChange = {e => setText(e.target.value)} value={text}/>
+      <div className = "send">
+        <input type = "file" style = {{display: 'none'}} id = 'file' onChange = {e => setImg(e.target.files[0])}/>
+        <label htmlFor = 'file'>
+          <img src = {Img} alt = "" />
         </label>
-        {(text || img) && <button onClick={handleSend}>Send</button>}
+        {(text || img) && <button onClick = {handleSend}>Send</button>}
       </div>
     </div>
   )

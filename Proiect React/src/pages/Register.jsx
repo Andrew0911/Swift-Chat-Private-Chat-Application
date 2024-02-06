@@ -45,8 +45,10 @@ const Register = () => {
                     email,
                     photoURL: downloadURL
                 });
-
+                // adding the user in the userChats collection
                 await setDoc(doc(db, "userChats", response.user.uid), {});
+                
+                // go to Home page
                 navigate("/");
 
                 });

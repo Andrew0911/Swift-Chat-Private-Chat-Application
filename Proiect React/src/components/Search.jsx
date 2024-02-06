@@ -12,8 +12,8 @@ const Search = () => {
   const {currentUser} = useContext(AuthContext);
   const {dispatch} = useContext(ChatContext);
 
-
   const handleSearch = async () =>{
+    
     const q = query(collection(db, "users"), where("displayName", "==", username), where("displayName", "!=", currentUser.displayName));
 
     try{
@@ -26,6 +26,7 @@ const Search = () => {
     }
   }
 
+  // search user on 'Enter' keypress
   const handleKey = e =>{
     e.code === "Enter" && handleSearch();
   }
@@ -67,23 +68,28 @@ const Search = () => {
     }catch (error){
       setError(true);
     }
+
+    // erase the input
     setUser(null);
     setUsername("");
-    //create user chats
   }
 
   return (
-    <div className='search'>
-      <div className="searchForm">
-        <input type="text" placeholder='Search for Users...' onKeyDown={handleKey} onChange={e=>setUsername(e.target.value)} value={username}/>
+    <div className = 'search'>
+
+      <div className = "searchForm">
+        <input type = "text" placeholder = 'Search for Users...' onKeyDown = {handleKey} onChange = {e => setUsername(e.target.value)} value = {username}/>
       </div>
-      {error && <span>No user found</span>}
-      {user && <div className="userChat" onClick={handleSelect}>
-        <img src={user.photoURL} alt="" />
-        <div className="userChatInfo">
-          <span>{user.displayName}</span>
+
+      {error && <span> No user found </span>}
+      {user && 
+        <div className = "userChat" onClick = {handleSelect}>
+          <img src = {user.photoURL} alt = "" />
+          <div className = "userChatInfo">
+            <span> {user.displayName} </span>
         </div>
       </div>}
+
     </div>
   )
 }

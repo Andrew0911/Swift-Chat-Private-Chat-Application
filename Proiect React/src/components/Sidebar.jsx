@@ -5,12 +5,13 @@ import Chats from './Chats'
 
 
 const Sidebar = () => {
+
+  // Sidebar manages all the users search and conversations display
   return (
-    <div className='sidebar'>
+    <div className = 'sidebar'>
       <Navbar></Navbar>
       <Search></Search>
       <Chats></Chats>
-      
     </div>
   )
 }

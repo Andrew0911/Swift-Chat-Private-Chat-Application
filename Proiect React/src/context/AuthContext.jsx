@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 
 export const AuthContext = createContext();
 
+// authentication system using Context API
 export const AuthContextProvider = ({children}) =>{
     const [currentUser, setCurrentUser] = useState({})
 

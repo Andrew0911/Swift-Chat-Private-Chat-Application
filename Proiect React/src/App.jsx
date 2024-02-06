@@ -1,4 +1,3 @@
-import { Logger } from "sass";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
@@ -8,27 +7,29 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  
   const {currentUser} = useContext(AuthContext)
   
-  const ProtectedRoute = ({children}) =>{
+  // protected route for our homepage
+  // if you are not logged in you will be redirected to the login page
+  const ProtectedRoute = ({children}) => {
     if(!currentUser){
-      return <Navigate to='/login'/>
+      return <Navigate to = '/login'/>
     }
-
     return children
   }
   
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route index element={
+        <Route path = "/">
+          <Route index element = {
             <ProtectedRoute>
               <Home/>
             </ProtectedRoute>
           }></Route>
-          <Route path="login" element={<Login/>}></Route>
-          <Route path="register" element={<Register/>}></Route>
+          <Route path = "login" element = {<Login/>}></Route>
+          <Route path = "register" element = {<Register/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
