@@ -1,5 +1,8 @@
 .formContainer{
-    background-color: #87ceeb;
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images6/Aesthetic-Baby-Blue-Wallpaper-1080p.jpg");
+    background-size: auto; 
+    background-repeat: no-repeat; 
+    background-position: center;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -7,13 +10,26 @@
 
     .formWrapper{
         background-color: white;
-        padding: 20px 60px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         gap: 10px;
         align-items: center;
 
+        .leftStar {
+            align-self: flex-start;
+            font-size: 24px;
+        }
+
+        .rightStar {
+            align-self: flex-end;
+            font-size: 24px;
+        }
+        
         .logo{
             color: #135a76;
             font-weight: bold;
@@ -86,7 +102,10 @@
 
 .home
 {
-    background-color: #87ceeb;
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images6/Aesthetic-Baby-Blue-Wallpaper-1080p.jpg");
+    background-size: auto; 
+    background-repeat: no-repeat; 
+    background-position: center;
     height: 100vh;
     display: flex;
     align-items: center;

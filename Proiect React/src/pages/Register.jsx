@@ -65,7 +65,8 @@ const Register = () => {
     return (
         <div className='formContainer'>
             <div className='formWrapper'>
-                <span className='logo'>Swift Chat</span>
+                <p className='leftStar'> ⭐ </p>
+                <span className='logo'>Swift Chat 🛫</span>
                 <span className='title'>Register</span>
                 <form onSubmit={handleSubmit}>
                     <input type='text' placeholder='Display Name'></input>
@@ -76,11 +77,12 @@ const Register = () => {
                         <img src ={Add} alt=''></img>
                         <span> Add a profile image</span>
                     </label>
-                    <button>Register</button>
+                    <button> Register </button>
                     {error &&<span>Something went wrong</span>}
 
                 </form>
                 <p>Already have an account? <Link to='/login'>Login</Link></p>
+                <p className='rightStar'> ⭐ </p>
             </div>
         </div>
     )

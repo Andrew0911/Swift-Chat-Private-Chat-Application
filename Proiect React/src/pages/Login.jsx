@@ -26,7 +26,8 @@ const Login = () => {
     return (
         <div className='formContainer'>
             <div className='formWrapper'>
-                <span className='logo'>Swift Chat</span>
+                <p className='leftStar'> ⭐ </p>
+                <span className='logo'>Swift Chat 🛫</span>
                 <span className='title'>Login</span>
                 <form onSubmit={handleSubmit}>
                     <input type='email' placeholder='E-mail'></input>
@@ -39,6 +40,7 @@ const Login = () => {
 
                 </form>
                 <p>Don't have an account? <Link to="/register">Register</Link></p>
+                <p className='rightStar'> ⭐ </p>
             </div>
         </div>
     )

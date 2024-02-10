@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div className = 'navbar'>
-      <span className = 'logo'> Swift Chat </span>
+      <span className = 'logo'> Swift Chat 🛫</span>
       <div className = 'user'>
         <img src = {currentUser.photoURL} alt = "" />
         <span>{currentUser.displayName} </span>
